@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+	*{margin:0; padding:0;list-style:none;font-family:'微软雅黑';font-size:12px;}
+	.wrap{width:600px;margin:100px auto;border: 1px solid #ccc;padding:50px;}
+	#upTab{overflow:hidden;}
+	#upTab li{float:left;width:100px;height:30px;line-height:30px;text-align:center;background:#eee;color:#333;cursor:pointer;
+		-webkit-transition:all 0.3s;
+		-o-transition:all 0.3s;
+		-ms-transition:all 0.3s;
+		-moz-transition:all 0.3s;
+		transition:all 0.3s;}
+	#upTab li.cur{background:#c40;color:#fff;}
+	.wrap>div,.wrap>div li{display:none;overflow:hidden;}
+	.wrap>div li{width:460px;height:260px;background:#666;color:#fff;padding:20px;float:left;}
+	.wrap>div.show,.wrap>div li.show{display:block;}
+	.wrap>div ul{float:left;}
+	.wrap>div div{width:100px;float:left;}
+	.wrap>div a{width:100px;display:block;text-align:center;height:30px;line-height:30px;text-decoration:none;color:#666;background:#eee;border-bottom:1px solid #ccc;
+		-webkit-transition:all 0.3s;
+		-o-transition:all 0.3s;
+		-ms-transition:all 0.3s;
+		-moz-transition:all 0.3s;
+		transition:all 0.3s;}
+	.wrap>div a.cur{background:#333;color:#fff;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul id="upTab">
+			<li class="cur">时尚女装</li>
+			<li >精品男装</li>
+		</ul>
+		<div id="woman" class="show">
+			<ul>
+				<li class="show" >
+						女装111111111111111111111111111111111111111111111111111111
+				</li>
+				<li>
+						女装22222222222222222222222222222222222222222222222222222
+				</li>
+				<li>
+						女装33333333333333333333333333333333333333333333333333333
+				</li>
+			</ul>
+			<div>
+				<a href="javascript:;" class="cur">女装1号</a>
+				<a href="javascript:;">女装2号</a>
+				<a href="javascript:;">女装3号</a>
+			</div>
+		</div>
+		<div id="man">
+			<ul>
+				<li class="show">
+						男装111111111111111111111111111111111111111111111111111111
+				</li>
+				<li>
+						男装22222222222222222222222222222222222222222222222222222
+				</li>
+				<li>
+						男装33333333333333333333333333333333333333333333333333333
+				</li>
+				<div>
+					<a href="javascript:;" class="cur">男装1号</a>
+					<a href="javascript:;">男装2号</a>
+					<a href="javascript:;">男装3号</a>
+				</div>
+			</ul>
+		</div>
+	</div>
+	<script>
+	var upTabLi=document.getElementById('upTab').getElementsByTagName('li');
+	var man=document.getElementById('man');
+	var woman=document.getElementById('woman');
+	var manRightTabs=man.getElementsByTagName('a');
+	var manLi=man.getElementsByTagName('li');
+	var womanRightTabs=woman.getElementsByTagName('a');
+	var womanLi=woman.getElementsByTagName('li');
+
+
+	function tab(btn,tabDom,time){
+		var count=0,t;
+		if(btn.length != tabDom.length)return;
+		if(time == undefined)time=2000;
+		for(var i=0;i<btn.length;i++){
+			btn[i].index=i;
+			btn[i].onclick=function(){
+				count=this.index;
+				btnTab(count);
+			};
+		}
+		clearInterval(t);
+		t=setInterval(timeTab, time);
+		function btnTab(n){
+			for(var i=0;i<btn.length;i++){
+				btn[i].className='';
+				tabDom[i].className='';
+			}
+			btn[n].className='cur';
+			tabDom[n].className='show';
+		}
+		function timeTab(){
+			count++;
+			if(count >= btn.length){
+				count=0;
+			}
+			for(var i=0;i<btn.length;i++){
+				btn[i].className='';
+				tabDom[i].className='';
+			}
+			btn[count].className='cur';
+			tabDom[count].className='show';
+		}
+	}
+
+
+	
+
+
+	tab(upTabLi,[woman,man],6000);
+	tab(manRightTabs,manLi);
+	tab(womanRightTabs,womanLi);
+		
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>socialshops</title>
+  <style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, 'microsoft yahei', Helvetica, sans-serif;
+    background: url(../lucky/img/draw_bgc.jpg) center top no-repeat;
+    background-size: cover;
+    min-width: 1300px;
+    overflow-x: scroll;
+  }
+  
+  ul li {
+    list-style: none;
+  }
+  
+  .main {
+    width: 1000px;
+    height: 600px;
+    position: relative;
+    margin: 18% auto;
+  }
+  
+  .name-box,
+  .num-box {
+    height: 100px;
+    width: 507px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -270px;
+    margin-top: -273px;
+    z-index: 8;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .name-list,
+  .num-list {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .num-box {
+    margin-top: -134px;
+  }
+  
+  .num,
+  .name {
+    width: 524px;
+    height: 100px;
+    float: left;
+    text-align: center;
+    line-height: 100px;
+    font-size: 60px;
+    color: #3e3107;
+    user-select: none;
+    -webkit-user-select: none;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .num span {
+    vertical-align: middle;
+  }
+  
+  .btn {
+    width: 480px;
+    height: 130px;
+    background: url(../lucky/img/btn.png) center no-repeat;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: 40px;
+    margin-left: -246px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 130px;
+    font-size: 60px;
+    color: #ffd76b;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="main_bg">
+    <div class="main">
+      <div class="name-box">
+        <ul class="name-list">
+          <li class="name">Socialshops</li>
+        </ul>
+      </div>
+      <div class="num-box">
+        <ul class="num-list">
+          <li class="num">888<span>**</span>888</li>
+        </ul>
+      </div>
+      <div class="btn">Go</div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../lucky/js/jquery.min.js"></script>
+<script type="text/javascript" src="../lucky/js/easing.js"></script>
+<script>
+$(function() {
+
+  //获取参与抽奖人员列表
+  var usrList = [];
+
+  var _name = $('.name-list');
+  var _num = $('.num-list');
+  _name[0].style.top = '0px';
+  _num[0].style.top = '0px';
+  var timer;
+  var timer1;
+  var running = false;
+
+  $('.btn').on('click', function() {
+
+    if ($(this).html() == 'Go') {
+      clearInterval(timer);
+      clearInterval(timer1);
+      var callback = function() {
+        $('.btn').html('LUCKY DRAW');
+        timer = setInterval(function() {
+          _name[0].style.top = (parseInt(_name[0].style.top) - 10) + 'px';
+          //纠正位置，目的是为了让他可以无限循环
+          if (parseInt(_name[0].style.top) < -100 * (usrList.length - 1)) {
+            _name[0].style.top = '-10px';
+          }
+        }, 10);
+
+        timer1 = setInterval(function() {
+          _num[0].style.top = (parseInt(_num[0].style.top) - 10) + 'px';
+          if (parseInt(_num[0].style.top) < -100 * (usrList.length - 1)) {
+            _num[0].style.top = '-10px';
+          }
+        }, 10)
+      }
+      getusr(callback);
+    } else if ($(this).html() == 'LUCKY DRAW') {
+      //屏蔽无效点击事件
+      if (running) {
+        console.log('无效点击事件')
+        return false;
+      };
+      running = true;
+      //清除之前的运动效果
+      clearInterval(timer);
+      clearInterval(timer1);
+      //getluckyer
+      var luckyer;
+      $.ajax({
+        url: 'http://app.socialshops.com/im/confluence/makeDecision',
+        type: 'post',
+        data: '',
+        dataType: 'json',
+        success: function(data) {
+          console.log(data.data.userName);
+          if (data.data) {
+            var nameList = '';
+            var numList = '';
+            var phonenum = '';
+            var v = data.data;
+            // phonenum = v.phonenum.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+            //位数不固定，不用正则
+            phonenum = v.phonenum.substring(0, 3) + '<span>**</span>' + v.phonenum.substring(5);
+            nameList = '<li class="name">' + v.userName + '</li>';
+            numList = '<li class="num">' + phonenum + '</li>';
+
+            $('.name-list').append(nameList);
+            $('.num-list').append(numList);
+
+            _name[0].style.top = '0px';
+            _num[0].style.top = '0px';
+
+            //移动的位置 top -200*i
+            //动画时间 duration 6000+index*3000
+            _num.animate({
+              top: (-100 * usrList.length) + 'px'
+            }, {
+              duration: 1000 * 5,
+              easing: "easeOutCirc",
+              complete: function() {
+                //同步name滚动，处理一个即可
+              }
+            });
+            _name.animate({
+              top: (-100 * usrList.length) + 'px'
+            }, {
+              duration: 1000 * 5,
+              easing: "easeOutCirc",
+              complete: function() {
+                $('.btn').html('Go');
+                setTimeout(function() {
+                  running = false;
+                }, 5000);
+              }
+            });
+          }
+        },
+        error: function(xhr, textStatus) {
+          alert('获取失败，请重试')
+        }
+      })
+    }
+
+  });
+
+  function getusr(callback) {
+    $.ajax({
+      url: 'http://app.socialshops.com/im/confluence/getUsers',
+      type: 'post',
+      data: '',
+      dataType: 'json',
+      success: function(data) {
+        console.log(data.data);
+        if (data.data.length > 0) {
+          usrList = data.data;
+          var nameList = '';
+          var numList = '';
+          $.each(data.data, function(i, v) {
+            // phonenum = v.phonenum.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+            //位数不固定，不用正则
+            phonenum = v.phonenum.substring(0, 3) + '<span>**</span>' + v.phonenum.substring(5);
+            nameList += '<li class="name">' + v.userName + '</li>';
+            numList += '<li class="num">' + phonenum + '</li>';
+          });
+
+          $('.name-list').html(nameList);
+          $('.num-list').html(numList);
+          callback && callback();
+        }
+
+
+      },
+      error: function(xhr, textStatus) {
+        //alert('获取失败，请重试')
+      },
+    })
+  };
+
+});
+</script>
