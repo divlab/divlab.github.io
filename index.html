@@ -8,7 +8,8 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="./favicon.ico">
+    <!--<link rel="icon" href="./favicon.ico">-->
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
     <title>use webstorm ide</title>
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -74,11 +75,22 @@
         <dt>总结一下：</dt>
         <dd>   一个电脑会生成一个默认的ssh_key(id_rsa),当想使用多个key时，需要自己新建（更改默认名），添加到ssh-add里；
             同一个账户可以向不同url push，但是向同一个url，例如github.com传递时，目前来看不能设置多个ssh，存疑
-            虽然生成了不同的key，add之后 依然不能，猜测是覆盖了
+            虽然生成了不同的key，add之后 依然不能，猜测是覆盖了 <br>
+            还要看一下git是否使用的本地配置
+            git config --global  --list
+            git config --local  --list
+
         </dd>
     </dl>
     <dl>
         <dt>其他介绍：</dt>
+        <dd>
+            Node.js 中，__dirname 总是指向被执行 js 文件的绝对路径(完整目录名)，
+            所以当你在 /d1/d2/myscript.js 文件中写了 __dirname， 它的值就是 /d1/d2 。
+            相反，./ 会返回你执行 node 命令的路径，例如你的工作路径。
+            有一个特殊情况是在 require() 中使用 ./ 时，这时的路径就会是含有 require() 的脚本文件的相对路径。
+            process cwd() 方法返回 Node.js 进程当前工作的目录
+        </dd>
         <dd>
             跳过使用暂存区域更新的方式 :
             git commit -a -m "代码提交信息"。
