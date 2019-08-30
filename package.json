@@ -16,5 +16,9 @@
     "babel-preset-react": "^6.24.1",
     "webpack": "3.10.0",
     "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "g": "^2.0.1",
+    "gh-pages": "^2.1.1"
   }
 }
