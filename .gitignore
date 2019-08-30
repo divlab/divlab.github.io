@@ -9,4 +9,4 @@ zhu.pub
 node_modules/
 
 npm-debug.log
-zTree_v3/
+.DS_Store
