@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ch-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>九宫格</title>
+</head>
+<style type="text/css">
+	.wrap { width: 400px; height: 400px; margin: 30px auto;}
+	.clearfix:after { display: block; content: ''; clear: both;}
+	.clearfix { zoom:1;}
+	.control {text-align: center; padding-top: 100px;}
+</style>
+<body>
+	<div>
+		<p class="control">
+			<input type="button" value="更换颜色">
+			<input type="button" value="开始">
+			<input type="button" value="暂停">
+		</p>
+		<div id="wrap" class="clearfix wrap"></div>
+	</div>
+	<div>
+		<p class="control">
+			<input type="button" value="更换颜色">
+			<input type="button" value="开始">
+			<input type="button" value="暂停">
+		</p>
+		<div id="wrap2" class="clearfix wrap"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	var oWrap = document.getElementById('wrap');
+	var oWrap2 = document.getElementById('wrap2');
+	nineCell(oWrap);
+	nineCell(oWrap2);
+
+	//创建九宫格，并赋予样式  
+	function nineCell(obj){
+		var oControl = obj.previousElementSibling;
+		var oChColor = oControl.getElementsByTagName('input')[0];
+		var oStart = oControl.getElementsByTagName('input')[1];
+		var oStop = oControl.getElementsByTagName('input')[2];
+		var arrColor = ['#E31C1C', '#0000FD', '#121212', '#E0E2CC', '#00FCFC', '#1D8EFD', '#5F3811', '#FCC4A9', '#EBDAD4', '#FBE400', '#988968','#61656B','#B40FB3','orange','blue','purple'];
+		var len = arrColor.length;
+		var iW = parseFloat(obj.clientWidth)/3 - 2;
+		var iH = parseFloat(obj.clientHeight)/3 - 2;
+
+		oChColor.onclick = changeColor;
+		oStart.onclick = autoChange;
+		oStop.onclick = clearTimer;
+
+		for( var i=0; i<9; i++ ){
+			var num = Math.round(Math.random()*len);
+			var iColor = arrColor[num];
+			var oDiv = document.createElement('div');
+			oDiv.style.cssText = 'float:left; margin-left:-1px; margin-top:-1px;';
+			oDiv.style.border = '1px solid #000';
+			oDiv.style.width = iW + 'px';
+			oDiv.style.height = iH + 'px';
+			oDiv.style.background = iColor;
+			obj.appendChild(oDiv);
+		}
+
+
+		//改变九宫格颜色
+		function changeColor(){
+			var oEle = obj.getElementsByTagName('div');
+			for(var i=0; i<oEle.length; i++){
+				var num = Math.round(Math.random()*len);
+				oEle[i].style.background = arrColor[num];
+			}
+		}
+
+		//暂停自动更换颜色
+		function clearTimer(){
+			clearInterval(obj.timer);
+		}
+
+		//开始自动更换颜色
+		function autoChange(){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(changeColor, 200);
+		}
+
+		obj.timer = setInterval(changeColor, 200);
+
+	}
+</script>
+</html>
