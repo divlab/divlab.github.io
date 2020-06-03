@@ -1,9 +1,2 @@
-#### 整理散落在各地的文件
-
-+ 有道云
-+ 简书
-+ sf
-+ cnblog
-+ bookmark
-+ 知乎专栏
-+ 百度网盘、微云网盘
+#### 博客
+https://divlab.github.io/
