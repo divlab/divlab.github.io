@@ -94,30 +94,7 @@
                         <br> e.g.  设定 LTS 版别名，命令：nvm alias 6 v6.9.5，显示：6 -> v6.9.5
                         <br>   设定最新版别名，命令：nvm alias 7 v7.5.0，显示：7 -> v7.5.0
         </dd>
-        <dt>git相关</dt>
-        <dd>
-            关于ssh_key：
-            <br> 一个电脑会生成一个默认的ssh_key(id_rsa),当想使用多个key时，需要自己新建（更改默认名），添加到ssh-add里；
-            <br> 同一个账户可以向不同url push，但是向同一个url，例如github.com传递时，目前来看不能设置多个ssh，存疑（已解决 应该是可以的， --local / --global）
-            <br> 虽然生成了不同的key，add之后 依然不能，猜测是覆盖了
-
-            <br> 以上问题 还要看一下git是否使用的本地配置
-            <br>git config --global  --list
-            <br>git config --local  --list
-        </dd>
-        <dd>
-            跳过使用暂存区域更新的方式 :
-            <br>git commit -a -m "代码提交信息"。
-            <br>git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。
-        </dd>
-        <dd>
-            如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：·git remote add origin <server> ,
-            <br> 比如我们要让本地的一个仓库和 Github 上创建的一个仓库关联可以这样git remote add origin https://github.com/Snailclimb/test.git
-            <br>将将这些改动提交到远端仓库：git push origin master (可以把 master 换成你想要推送的任何分支)
-        </dd>
-        <dd>origin 是默认的远程版本库名称，你可以在 .git/config 之中进行修改
-        <br>事实上 git push origin master 的意思是 git push origin master:master （将本地的 master 分支推送至远端的 master 分支，如果没有就新建一个）
-        <br>vi ~/.gitconfig; 查看全局git配置</dd>
+                                   <dt>npx 一个命令行工具</dt>           
           <dd> npx 官网的简介：https://docs.npmjs.com/cli/v10/commands/npx
 
 <br>npx 是一个命令行工具，npm 5.2.0 版本中新增的功能。以前用 vue 的脚手架创建项目，需要全局安装 vue-cli，用 npx 可以不用全局安装就能使用。可能很多人知道，用起来的可能没多少。
@@ -150,6 +127,31 @@
 <br>npx 侧重 execute，执行
 <br>npm 是有版本的，可更新，npx 就是一个工具，只执行   
           </dd>
+        <dt>git相关</dt>
+        <dd>
+            关于ssh_key：
+            <br> 一个电脑会生成一个默认的ssh_key(id_rsa),当想使用多个key时，需要自己新建（更改默认名），添加到ssh-add里；
+            <br> 同一个账户可以向不同url push，但是向同一个url，例如github.com传递时，目前来看不能设置多个ssh，存疑（已解决 应该是可以的， --local / --global）
+            <br> 虽然生成了不同的key，add之后 依然不能，猜测是覆盖了
+
+            <br> 以上问题 还要看一下git是否使用的本地配置
+            <br>git config --global  --list
+            <br>git config --local  --list
+        </dd>
+        <dd>
+            跳过使用暂存区域更新的方式 :
+            <br>git commit -a -m "代码提交信息"。
+            <br>git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。
+        </dd>
+        <dd>
+            如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：·git remote add origin <server> ,
+            <br> 比如我们要让本地的一个仓库和 Github 上创建的一个仓库关联可以这样git remote add origin https://github.com/Snailclimb/test.git
+            <br>将将这些改动提交到远端仓库：git push origin master (可以把 master 换成你想要推送的任何分支)
+        </dd>
+        <dd>origin 是默认的远程版本库名称，你可以在 .git/config 之中进行修改
+        <br>事实上 git push origin master 的意思是 git push origin master:master （将本地的 master 分支推送至远端的 master 分支，如果没有就新建一个）
+        <br>vi ~/.gitconfig; 查看全局git配置</dd>
+  
     </dl>
 </div>
 
