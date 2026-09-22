@@ -1,172 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="./favicon.ico">
-    <title>divlab</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-            padding-top: 50px;
-        }
-        .content{
-            margin:20px auto;
-        }
-        dd{
-            border-top:1px solid #ccc;
-            padding:10px;
-            line-height:24px;
-        }
-
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="divlab 开发笔记">
+  <link rel="icon" href="./favicon.ico">
+  <title>divlab</title>
+  <style>
+    :root{--bg:#0b1020;--paper:rgba(21,29,51,.78);--text:#eaf0ff;--muted:#aab6d1;--line:rgba(177,196,255,.14);--accent:#8daeff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}body::before,body::after{content:"";position:fixed;z-index:-1;width:34rem;height:34rem;border-radius:50%;filter:blur(30px);opacity:.28;pointer-events:none;animation:float 12s ease-in-out infinite}body::before{top:-16rem;left:-12rem;background:#4669dd}body::after{right:-14rem;bottom:-18rem;background:#166f9c;animation-delay:-6s}.nav{height:62px;background:rgba(11,16,32,.72);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}.nav-inner,.content{width:min(900px,calc(100% - 32px));margin:auto}.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:750;letter-spacing:-.02em}.nav-links{display:flex;gap:22px;font-size:.9rem;color:var(--muted)}a{color:inherit;text-decoration:none}.nav-links a{transition:color .2s ease}.nav-links a:hover{color:var(--accent)}.content{margin-top:38px;margin-bottom:64px;animation:rise .7s cubic-bezier(.2,.8,.2,1) both}dl{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 45px rgba(0,0,0,.22);overflow:hidden}dt{padding:22px 27px 7px;font-size:1.05rem;font-weight:700}dd{margin:0;padding:18px 27px;border-top:1px solid var(--line);color:#c5cee3;white-space:normal;transition:background .22s ease}dd:hover{background:rgba(141,174,255,.055)}dt+span{display:block;padding:0 27px;color:var(--muted);font-size:.9rem}code{padding:1px 5px;border-radius:4px;background:rgba(141,174,255,.12);color:#b8cdff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}@keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(3rem,2rem,0) scale(1.08)}}@media(max-width:560px){.nav-links{gap:14px}.content{margin-top:22px}.nav-inner,.content{width:min(100% - 24px,900px)}dt{padding:18px 18px 5px}dd{padding:16px 18px;font-size:.93rem}dt+span{padding:0 18px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
 </head>
-
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://github.com/divlab">Dashboard</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" target="_blank">mozilla</a></li>
-                <li><a href="/book/index.html">about</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-    </div>
-</nav>
-<div class="container content">
+  <nav class="nav"><div class="nav-inner"><a class="brand" href="https://github.com/divlab">Dashboard</a><div class="nav-links"><a href="/">Home</a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" target="_blank" rel="noreferrer">mozilla</a><a href="/book/index.html">about</a></div></div></nav>
+  <main class="content">
     <dl>
-        <dt>本地安装: </dt><span id="txt2"></span>
-        <dd> npm install xxx 安装到命令行所在目录的node_module目录。</dd>
-        <dt>全局安装:</dt>
-
-        <dd> npm install xxx -g 安装到 \AppData\Roaming\npm\node_modules目录。</dd>
-
-        <dd> npm install takes 3 exclusive, optional flags which save or update the package version in your main package.json:
-
-            <br /> -S, --save: Package will appear in your dependencies.
-
-            <br /> -D, --save-dev: Package will appear in your devDependencies.
-
-            <br /> -O, --save-optional: Package will appear in your optionalDependencies.
-        </dd>
-        <dd>
-            Node.js 中，__dirname 总是指向被执行 js 文件的绝对路径(完整目录名)，所以当你在 /d1/d2/myscript.js 文件中写了 __dirname， 它的值就是 /d1/d2 。
-
-            <br>相反，./ 会返回你执行 node 命令的路径，例如你的工作路径。
-
-            <br>有一个特殊情况是在 require() 中使用 ./ 时，这时的路径就会是含有 require() 的脚本文件的相对路径。
-
-            <br>process cwd() 方法返回 Node.js 进程当前工作的目录
-        </dd>
-        <dt>node版本管理 nvm</dt>
-        <dd>
-            nvm 常用命令
-            <br>● nvm install stable  安装最新稳定版 node
-
-            <br>● nvm install <version>  安装指定版本，如：安装v4.4.0，nvm install v4.4.0
-
-            <br> ● nvm uninstall <version>  删除已安装的指定版本，语法与install类似
-
-                <br> ● nvm use <version>  切换使用指定的版本node
-
-                    <br> ● nvm ls  列出所有安装的版本   nvm ls-remote
-
-                    <br> ● nvm alias default <version>  如： nvm alias default v11.1.0
-
-                        <br> ● 给特定版本分配alias  nvm alias carbon 8.16.0
-                        <br> e.g.  设定 LTS 版别名，命令：nvm alias 6 v6.9.5，显示：6 -> v6.9.5
-                        <br>   设定最新版别名，命令：nvm alias 7 v7.5.0，显示：7 -> v7.5.0
-        </dd>
-                                   <dt>npx 一个命令行工具</dt>           
-          <dd> npx 官网的简介：https://docs.npmjs.com/cli/v10/commands/npx
-
-<br>npx 是一个命令行工具，npm 5.2.0 版本中新增的功能。以前用 vue 的脚手架创建项目，需要全局安装 vue-cli，用 npx 可以不用全局安装就能使用。可能很多人知道，用起来的可能没多少。
-
-<br>vue2 创建项目，之前需要全局安装：
-
-<br>npm install @vue/cli -g
-
-<br>vue create project-name
-<br>用 npx 可以直接创建：
-
-
-<br>npx @vue/cli create project-name
-<br>使用方法就是 npx 包名 运行命令，就是比较看网速，创建的时候需要去远程下载，比较费时间。
-
-<br>npx 的运行机制：
-
-<br>当 npx 运行某个命令时，npx 会首先检查本地是否已经安装了该命令对应的包。
-<br>如果本地已经安装了，npx 会直接使用本地安装的包来执行命令。
-<br>如果本地没有安装，npx 下载最新版本的相关包。
-<br>载完成后，npx 会临时将包安装到一个临时目录中，并使用该临时目录中的包来执行命令。
-<br>命令执行完毕后，npx 会自动清理临时目录中的包，以节省空间。
-<br>npx 的好处肯定就显而易见了，不用全局安装，节省了空间，每次使用的包都是远程最新的，对于那些只需要偶尔使用某些命令或工具的情况非常有用，如果是想要用不同的版本，npx 的优势也是很明显，根本不会版本冲突。缺点就是每次都得下载一下，网络不好的情况，需要一定的时间，如果不是常用的，用 npx 会很方便快捷，如果是常用的，还是建议全局安装一下。
-
-<br>如果想看 npx 的缓存位置可以用 npm config get cache，里面_npx 就有，但是时效和什么时候清除，怎么样的机制清除，没找到对应的官方文档。
-
-<br>npm 和 npx 侧重点不同：
-
-<br>npm 侧重 manage，安装、管理、发布
-<br>npx 侧重 execute，执行
-<br>npm 是有版本的，可更新，npx 就是一个工具，只执行   
-          </dd>
-        <dt>git相关</dt>
-        <dd>
-            关于ssh_key：
-            <br> 一个电脑会生成一个默认的ssh_key(id_rsa),当想使用多个key时，需要自己新建（更改默认名），添加到ssh-add里；
-            <br> 同一个账户可以向不同url push，但是向同一个url，例如github.com传递时，目前来看不能设置多个ssh，存疑（已解决 应该是可以的， --local / --global）
-            <br> 虽然生成了不同的key，add之后 依然不能，猜测是覆盖了
-
-            <br> 以上问题 还要看一下git是否使用的本地配置
-            <br>git config --global  --list
-            <br>git config --local  --list
-        </dd>
-        <dd>
-            跳过使用暂存区域更新的方式 :
-            <br>git commit -a -m "代码提交信息"。
-            <br>git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。
-        </dd>
-        <dd>
-            如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：·git remote add origin <server> ,
-            <br> 比如我们要让本地的一个仓库和 Github 上创建的一个仓库关联可以这样git remote add origin https://github.com/Snailclimb/test.git
-            <br>将将这些改动提交到远端仓库：git push origin master (可以把 master 换成你想要推送的任何分支)
-        </dd>
-        <dd>origin 是默认的远程版本库名称，你可以在 .git/config 之中进行修改
-        <br>事实上 git push origin master 的意思是 git push origin master:master （将本地的 master 分支推送至远端的 master 分支，如果没有就新建一个）
-        <br>vi ~/.gitconfig; 查看全局git配置</dd>
-  
+      <dt>本地安装:</dt><span id="txt2"></span>
+      <dd>npm install xxx 安装到命令行所在目录的node_module目录。</dd>
+      <dt>全局安装:</dt>
+      <dd>npm install xxx -g 安装到 \AppData\Roaming\npm\node_modules目录。</dd>
+      <dd>npm install takes 3 exclusive, optional flags which save or update the package version in your main package.json:<br><br>-S, --save: Package will appear in your dependencies.<br>-D, --save-dev: Package will appear in your devDependencies.<br>-O, --save-optional: Package will appear in your optionalDependencies.</dd>
+      <dd>Node.js 中，__dirname 总是指向被执行 js 文件的绝对路径(完整目录名)，所以当你在 /d1/d2/myscript.js 文件中写了 __dirname， 它的值就是 /d1/d2 。<br><br>相反，./ 会返回你执行 node 命令的路径，例如你的工作路径。<br><br>有一个特殊情况是在 require() 中使用 ./ 时，这时的路径就会是含有 require() 的脚本文件的相对路径。<br><br>process cwd() 方法返回 Node.js 进程当前工作的目录</dd>
+      <dt>node版本管理 nvm</dt>
+      <dd>nvm 常用命令<br>● nvm install stable　安装最新稳定版 node<br>● nvm install &lt;version&gt;　安装指定版本，如：安装v4.4.0，nvm install v4.4.0<br>● nvm uninstall &lt;version&gt;　删除已安装的指定版本，语法与install类似<br>● nvm use &lt;version&gt;　切换使用指定的版本node<br>● nvm ls　列出所有安装的版本　nvm ls-remote<br>● nvm alias default &lt;version&gt;　如：nvm alias default v11.1.0<br>● 给特定版本分配alias　nvm alias carbon 8.16.0<br>e.g. 设定 LTS 版别名，命令：nvm alias 6 v6.9.5，显示：6 -&gt; v6.9.5<br>设定最新版别名，命令：nvm alias 7 v7.5.0，显示：7 -&gt; v7.5.0</dd>
+      <dt>npx 一个命令行工具</dt>
+      <dd>npx 官网的简介：https://docs.npmjs.com/cli/v10/commands/npx<br><br>npx 是一个命令行工具，npm 5.2.0 版本中新增的功能。以前用 vue 的脚手架创建项目，需要全局安装 vue-cli，用 npx 可以不用全局安装就能使用。可能很多人知道，用起来的可能没多少。<br><br>vue2 创建项目，之前需要全局安装：<br><br>npm install @vue/cli -g<br><br>vue create project-name<br>用 npx 可以直接创建：<br><br>npx @vue/cli create project-name<br><br>使用方法就是 npx 包名 运行命令，就是比较看网速，创建的时候需要去远程下载，比较费时间。<br><br>npx 的运行机制：<br><br>当 npx 运行某个命令时，npx 会首先检查本地是否已经安装了该命令对应的包。<br>如果本地已经安装了，npx 会直接使用本地安装的包来执行命令。<br>如果本地没有安装，npx 下载最新版本的相关包。<br>载完成后，npx 会临时将包安装到一个临时目录中，并使用该临时目录中的包来执行命令。<br>命令执行完毕后，npx 会自动清理临时目录中的包，以节省空间。<br><br>npx 的好处肯定就显而易见了，不用全局安装，节省了空间，每次使用的包都是远程最新的，对于那些只需要偶尔使用某些命令或工具的情况非常有用，如果是想要用不同的版本，npx 的优势也是很明显，根本不会版本冲突。缺点就是每次都得下载一下，网络不好的情况，需要一定的时间，如果不是常用的，用 npx 会很方便快捷，如果是常用的，还是建议全局安装一下。<br><br>如果想看 npx 的缓存位置可以用 npm config get cache，里面_npx 就有，但是时效和什么时候清除，怎么样的机制清除，没找到对应的官方文档。<br><br>npm 和 npx 侧重点不同：<br>npm 侧重 manage，安装、管理、发布<br>npx 侧重 execute，执行<br>npm 是有版本的，可更新，npx 就是一个工具，只执行</dd>
+      <dt>git相关</dt>
+      <dd>关于ssh_key：<br>一个电脑会生成一个默认的ssh_key(id_rsa),当想使用多个key时，需要自己新建（更改默认名），添加到ssh-add里；<br>同一个账户可以向不同url push，但是向同一个url，例如github.com传递时，目前来看不能设置多个ssh，存疑（已解决 应该是可以的， --local / --global）<br>虽然生成了不同的key，add之后 依然不能，猜测是覆盖了<br><br>以上问题 还要看一下git是否使用的本地配置<br>git config --global --list<br>git config --local --list</dd>
+      <dd>跳过使用暂存区域更新的方式：<br>git commit -a -m "代码提交信息"。<br>git commit 加上 -a 选项，Git 就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过 git add 步骤。</dd>
+      <dd>如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：·git remote add origin &lt;server&gt;，<br>比如我们要让本地的一个仓库和 Github 上创建的一个仓库关联可以这样git remote add origin https://github.com/Snailclimb/test.git<br>将将这些改动提交到远端仓库：git push origin master (可以把 master 换成你想要推送的任何分支)</dd>
+      <dd>origin 是默认的远程版本库名称，你可以在 .git/config 之中进行修改<br>事实上 git push origin master 的意思是 git push origin master:master （将本地的 master 分支推送至远端的 master 分支，如果没有就新建一个）<br>vi ~/.gitconfig; 查看全局git配置</dd>
     </dl>
-</div>
-
-<div class="container"></div>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="./base/js/jquery.min.js"></script>
-<script src="./base/js/bootstrap.min.js"></script>
-<script>
-    $(function(){
-
-    })
-
-</script>
+  </main>
 </body>
-
 </html>
